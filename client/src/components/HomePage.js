@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import homepage from '../image/homepage.jpg';
 import organize from '../image/organize.png';
 import person from '../image/person.png';
@@ -7,10 +9,18 @@ import company from '../image/company.png';
 import { headingStyle } from '../styles/headingStyle';
 import { Card } from './common';
 
+import { fetchUser } from '../actions';
+
 //lipsum
 import { norm_lip, half_norm_lip } from '../lipsum/lipsum';
 
 class HomePage extends Component {
+
+	componentWillMount() {
+		this.props.fetchUser();
+	}
+
+
 	render() {
 		return (
 			<div style={{ marginBottom: 150 }}>
@@ -51,7 +61,7 @@ class HomePage extends Component {
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 						<div className='col s3'>
-						<img src={person} ='Know who stands out to you' />
+						<img src={person} alt='Know who stands out to you' />
 						<h1 style={{...headingStyle.black, fontSize: 25 }}>Know who stands out to you</h1>
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
@@ -116,4 +126,10 @@ const styles = {
 	}
 }
 
-export default HomePage;
+const mapStateToProps = ({ FetchUser }) => {
+	const { user } = FetchUser;
+	if (user) { console.log('found user'); } else { console.log('user not found'); }
+	return user;
+}
+
+export default connect(mapStateToProps, { fetchUser })(HomePage);
