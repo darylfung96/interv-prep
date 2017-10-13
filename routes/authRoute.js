@@ -1,9 +1,6 @@
 var passport = require('passport');
 
 module.exports = (app) => {
-	app.get('/', (req, res) => {
-	res.send('hello');
-	});
 
 	app.get('/api/current_user', (req, res) => {
 		res.send(req.user);

@@ -51,8 +51,8 @@ class HomePage extends Component {
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 						<div className='col s3'>
-						<img src={person} ='Know who is stands out to you' />
-						<h1 style={{...headingStyle.black, fontSize: 25 }}>Know who is stands out to you</h1>
+						<img src={person} ='Know who stands out to you' />
+						<h1 style={{...headingStyle.black, fontSize: 25 }}>Know who stands out to you</h1>
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 					</div>
