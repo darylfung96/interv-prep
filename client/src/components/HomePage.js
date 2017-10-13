@@ -37,7 +37,7 @@ class HomePage extends Component {
 					<div className='row center'>
 						<div className='col s3'>
 						<img src={organize} />
-						<h1 style={{...headingStyle.black, fontSize: 25 }}>Be more organized</h1>
+						<h1 style={{...headingStyle.black, fontSize: 25 }}>Be a little bit more organized</h1>
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 						<div className='col s3'>
@@ -63,9 +63,9 @@ class HomePage extends Component {
 
 				<div className='container' style={styles.loginStyle}>
 					<h1>Getting started?</h1>
-					<p style={styles.paraBlackStyle}>There are a few ways you can get started. You can login to either one of the authentication to get started.</p>
+					<p style={styles.paraBlackStyle}>There are a few ways you can get started. You can login to either one of these to get started.</p>
 					<a href='/auth/google' className="waves-effect waves-light red lighten-1 btn" style={{ marginTop: 15 }}>Login with Google</a>
-					<a className="waves-effect waves-light blue darken-3 btn" style={{ marginTop: 15 }}>Login with Facebook</a>
+					<a href='/auth/facebook' className="waves-effect waves-light blue darken-3 btn" style={{ marginTop: 15 }}>Login with Facebook</a>
 				</div>
 
 

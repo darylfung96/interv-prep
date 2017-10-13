@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 
 var UserSchema = new mongoose.Schema({
-	googleID: 'string',
+	googleID: String,
+	facebookID: String,
 });
 
-var User = mongoose.model('User', UserSchema);
+mongoose.model('User', UserSchema);
