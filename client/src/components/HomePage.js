@@ -36,22 +36,22 @@ class HomePage extends Component {
 
 					<div className='row center'>
 						<div className='col s3'>
-						<img src={organize} />
+						<img src={organize} alt='be a little bit more organized' />
 						<h1 style={{...headingStyle.black, fontSize: 25 }}>Be a little bit more organized</h1>
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 						<div className='col s3'>
-							<img src={company} />
+							<img src={company} alt='Know which company you want'/>
 							<h1 style={{...headingStyle.black, fontSize: 25 }}>Know which company you want</h1>
 							<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 						<div className='col s3'>
-						<img src={position} />
+						<img src={position} alt='Know which position you want' />
 						<h1 style={{...headingStyle.black, fontSize: 25 }}>Know which position you want</h1>
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
 						<div className='col s3'>
-						<img src={person} />
+						<img src={person} ='Know who is stands out to you' />
 						<h1 style={{...headingStyle.black, fontSize: 25 }}>Know who is stands out to you</h1>
 						<p style={styles.paraBlackStyle}>{half_norm_lip}</p>
 						</div>
