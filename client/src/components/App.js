@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import HomePage from './HomePage';
-import LoginPage from './LoginPage';
+import Dashboard from './Dashboard';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 				<Route exact path='/' component={HomePage}/>
-				<Route exact path='/user/*' component={LoginPage} />
+				<Route exact path='/dashboard' component={Dashboard} />
 				</div>
 			</BrowserRouter>
 		</div>
