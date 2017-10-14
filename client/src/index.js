@@ -16,4 +16,4 @@ ReactDOM.render(
 	<Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
 	<App />
 	</Provider>
-	,document.querySelector('root'));
+	,document.querySelector('#root'));
