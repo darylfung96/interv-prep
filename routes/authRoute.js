@@ -16,10 +16,7 @@ module.exports = (app) => {
 		scope: ['profile', 'email'],
 	}));
 
-	app.get('/auth/google/callback', passport.authenticate('google', {
-		successRedirect: '/',
-		failedRedirect: '/fail',
-	}));
+	app.get('/auth/google/callback', passport.authenticate('google'));
 
 
 //facebook authentication
