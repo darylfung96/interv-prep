@@ -7,9 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 
 import 'materialize-css/dist/css/materialize.min.css';
-//import 'materialize-css/dist/js/materialize.min';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap-theme.min.css';
+import 'materialize-css/dist/js/materialize.min';
 
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
