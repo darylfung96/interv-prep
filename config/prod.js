@@ -2,5 +2,8 @@ module.exports = {
 	CLIENT_ID: process.env.CLIENT_ID,
 	CLIENT_SECRET: process.env.CLIENT_SECRET,
 	MONGO_URI: process.env.MONGO_URI,
-	COOKIE_KEY: process.env.COOKIE_KEY
+	COOKIE_KEY: process.env.COOKIE_KEY,
+
+	FACEBOOK_CLIENT_ID: process.env.FACEBOOK_CLIENT_ID,
+	FACEBOOK_CLIENT_SECRET: process.env.FACEBOOK_CLIENT_SECRET
 }
