@@ -24,16 +24,18 @@ passport.use(
 		proxy: true
 	},
 	async (accessToken, refreshToken, profile, done) => {
-		const existingUser = await User.findOne({ googleID: profile.id });
-		if(existingUser) {
-			done(null, existingUser);
+			const existingUser = await User.findOne({ googleID: profile.id });
+				if(existingUser) {
+					// user exist
+					return done(null, existingUser);
+				}
+
+				const user = await new User({ googleID: profile.id }).save();
+				done(null, user);
+
 		}
-		const user = await new User({ googleID: profile.id }).save((err) => {
-			console.log(err);
-		});
-		done(null, user);
-	}
-));
+	)
+);
 
 passport.use(
 	new FacebookStrategy({
