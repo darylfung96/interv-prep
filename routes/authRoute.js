@@ -11,6 +11,10 @@ module.exports = (app) => {
 		res.send(req.user);
 	});
 
+	app.get('/hello', (req, res) => {
+		res.send('hello');
+	});
+
 //google authentication
 	app.get('/auth/google', passport.authenticate('google', {
 		scope: ['profile', 'email'],
