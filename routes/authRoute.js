@@ -12,7 +12,7 @@ module.exports = (app) => {
 	});
 
 //google authentication
-	app.get('//auth/google', passport.authenticate('google', {
+	app.get('/auth/google', passport.authenticate('google', {
 		scope: ['profile', 'email'],
 	}));
 
