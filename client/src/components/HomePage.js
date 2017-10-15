@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import homepage from '../image/homepage.jpg';
 import organize from '../image/organize.png';
@@ -16,12 +17,16 @@ import { norm_lip, half_norm_lip } from '../lipsum/lipsum';
 
 class HomePage extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.fetchUser();
 	}
 
-
 	render() {
+		if(this.props._id !== undefined) {
+			return <Redirect to="/dashboard" />
+		}
+
+
 		return (
 			<div style={{ marginBottom: 150 }}>
 				<div style={styles.backImageStyle}>
@@ -128,7 +133,6 @@ const styles = {
 
 const mapStateToProps = ({ FetchUser }) => {
 	const { user } = FetchUser;
-	if (user) { console.log('found user'); } else { console.log('user not found'); }
 	return user;
 }
 
