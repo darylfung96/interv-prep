@@ -6,3 +6,9 @@ export const headingStyle = {
 		fontFamily: 'Roboto', fontSize: 40, color: 'black',
 	}
 };
+
+
+
+export const fontFamilyStyle = {
+	fontFamily: 'Roboto',
+};

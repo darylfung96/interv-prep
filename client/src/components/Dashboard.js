@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import { Header } from './common';
 import { fetchUser } from '../actions';
 
 class Dashboard extends Component {
@@ -12,6 +14,7 @@ class Dashboard extends Component {
 
 		return (
 			<div>
+			<Header />
 				<p>Logged In</p>
 			</div>
 		);
