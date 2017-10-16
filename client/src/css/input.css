@@ -1,0 +1,37 @@
+/* label color */
+ .input-field label {
+   color: #888;
+ }
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+   color: #2196f3 !important;
+ }
+ /* label underline focus color */
+ .input-field input[type=text]:focus {
+   border-bottom: 1px solid #2196f3 !important;
+   box-shadow: 0 1px 0 0 #2196f3 !important;
+ }
+ /* valid color */
+ .input-field input[type=text].valid {
+   border-bottom: 1px solid #2196f3;
+   box-shadow: 0 1px 0 0 #2196f3;
+ }
+ /* invalid color */
+ .input-field input[type=text].invalid {
+   border-bottom: 1px solid red;
+   box-shadow: 0 1px 0 0 red;
+ }
+ /* icon prefix focus color */
+ .input-field .prefix.active {
+   color: #000;
+ }
+
+ /* textarea focus color */
+ .input-field textarea:focus + label {
+   color: #2196f3 !important;
+ }
+ /* textarea underline focus color */
+ .input-field textarea:focus {
+   border-bottom: 1px solid #2196f3 !important;
+   box-shadow: 0 1px 0 0 #2196f3 !important;
+ }

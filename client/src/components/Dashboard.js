@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Header } from './common';
@@ -10,7 +10,7 @@ class Dashboard extends Component {
 	render() {
 
 		if (this.props._id === undefined) {
-			return <Redirect to="/" />
+			return <Redirect to='/' />
 		}
 
 		return (
@@ -19,19 +19,21 @@ class Dashboard extends Component {
 			<br/><br/><br/>
 			<h4 style={{ marginLeft: 15 }}>Interviews</h4>
 
-			<div className="collection">
-			  <a href="#!" className="collection-item blue-text text-darken-1" style={{ fontSize: 18 }}><span class="badge">1</span>Wawanesa</a>
-			  <a href="#!" className="collection-item blue-text text-darken-1" style={{ fontSize: 18 }}><span class="new badge">4</span>Norima</a>
-			  <a href="#!" className="collection-item blue-text text-darken-1" style={{ fontSize: 18 }}>24-7 InTouch</a>
-			  <a href="#!" className="collection-item blue-text text-darken-1" style={{ fontSize: 18 }}><span class="badge">14</span>Amazon</a>
+			<div className='collection'>
+			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>1</span>Wawanesa</a>
+			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='new badge'>4</span>Norima</a>
+			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}>24-7 InTouch</a>
+			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>14</span>Amazon</a>
 			</div>
 
-			<div class="fixed-action-btn horizontal">
-    			<a class="btn-floating btn-large blue lighten-1">
-      				<i class="large material-icons">mode_edit</i>
+
+
+			<div className='fixed-action-btn horizontal'>
+    			<a className='btn-floating btn-large blue lighten-1'>
+      				<i className='large material-icons'>mode_edit</i>
     			</a>
     			<ul>
-      				<li><a class="btn-floating red"><i class="material-icons">add</i></a></li>
+      				<li><Link to='/dashboard/add' className='btn-floating red'><i className='material-icons'>add</i></Link></li>
     			</ul>
   			</div>
 
