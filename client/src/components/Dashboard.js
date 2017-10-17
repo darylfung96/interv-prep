@@ -3,10 +3,17 @@ import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Header } from './common';
-import { fetchUser } from '../actions';
+import CompanyItem from './CompanyItem';
+import { fetchUser, fetchCollections } from '../actions';
 import { fontFamilyStyle } from '../styles/fontStyle';
 
 class Dashboard extends Component {
+
+	componentWillMount() {
+		
+	}
+
+
 	render() {
 
 		if (this.props._id === undefined) {
@@ -47,4 +54,4 @@ const mapStateToProps = ({ FetchUser }) => {
 	return user;
 };
 
-export default connect(mapStateToProps, { fetchUser })(Dashboard);
+export default connect(mapStateToProps, { fetchUser, fetchCollections })(Dashboard);
