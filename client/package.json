@@ -8,7 +8,10 @@
     },
     "/api/*": {
       "target": "http://localhost:5000"
-    }
+  	},
+  	"/dashboard/add/submit": {
+	  "target": "http://localhost:5000"
+	}
   },
   "dependencies": {
     "axios": "^0.16.2",

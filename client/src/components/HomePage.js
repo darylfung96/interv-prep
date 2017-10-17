@@ -23,7 +23,7 @@ class HomePage extends Component {
 
 	render() {
 		if(this.props._id !== undefined) {
-			return <Redirect to="/dashboard" />
+			return <Redirect to="/dashboard" />;
 		}
 
 

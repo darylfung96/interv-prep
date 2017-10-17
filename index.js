@@ -4,6 +4,7 @@ var passport = require('passport');
 var cookieSession = require('cookie-session');
 var mongoose = require('mongoose');
 var keys = require('./config/keys');
+var bodyParser = require('body-parser');
 
 mongoose.connect(keys.MONGO_URI);
 require('./models/User');
@@ -16,8 +17,10 @@ app.use(cookieSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 
 require('./routes/authRoute')(app);
+require('./routes/dashboardRoute')(app);
 
 const path = require('path');
 
