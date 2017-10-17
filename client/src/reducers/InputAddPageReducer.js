@@ -1,7 +1,7 @@
 import { UPDATE_COMPANY_INPUT, UPDATE_POSITION_INPUT, UPDATE_RESEARCH_INPUT,
 		 UPDATE_QUESTION_INPUT, UPDATE_NOTES_INPUT, ON_ADD, RESET_INPUTS } from '../actions/types';
 
-const INITIAL_STATE = { company: '', position: '', research: '', question: '', notes: '', onAdd: false };
+const INITIAL_STATE = { company: '', position: '', research: '', question: '', notes: '', addSuccess: false };
 
 export default (state = INITIAL_STATE, action) => {
 	switch(action.type) {
@@ -18,7 +18,7 @@ export default (state = INITIAL_STATE, action) => {
 		case RESET_INPUTS:
 			return INITIAL_STATE;
 		case ON_ADD: {
-			return { ...state, onAdd: action.payload };
+			return { ...state, addSuccess: action.payload };
 		}
 		default:
 			return state;

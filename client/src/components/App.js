@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Notifications from 'react-notify-toast';
 
 import HomePage from './HomePage';
 import Dashboard from './Dashboard';
@@ -9,6 +10,7 @@ class App extends Component {
   render() {
     return (
 		<div>
+			<Notifications />
 			<BrowserRouter>
 				<div>
 				<Route exact path='/' component={HomePage}/>

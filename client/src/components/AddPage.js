@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { notify } from 'react-notify-toast';
 
 import { updateCompany, updatePosition, updateResearch, updateQuestion, updateNotes, onAdd, resetInputs } from '../actions';
 import { Header } from './common';
@@ -10,21 +11,7 @@ class AddPage extends Component {
 
 	onAdd() {
 		const { company, position, research, question, notes } = this.props;
-		fetch('/dashboard/add/submit', {
-	  		method: 'POST',
-	  		headers: {
-	    		'Accept': 'application/json',
-	    		'Content-Type': 'application/json',
-	  		},
-	  		body: JSON.stringify({
-	    		company,
-				position,
-				research,
-				question,
-				notes
-	  		})
-		});
-		// this.props.onAdd(company, position, research, question, notes);
+		this.props.onAdd(company, position, research, question, notes);
 	}
 
 	componentWillMount() {
@@ -32,6 +19,13 @@ class AddPage extends Component {
 	}
 
 	render() {
+
+		if(this.props.addSuccess) {
+			this.props.resetInputs();
+			notify.show('successfully added');
+			return <Redirect to='/dashboard' />;
+		}
+
 
 		return(
 			<div>
@@ -60,8 +54,8 @@ class AddPage extends Component {
 }
 
 const mapStateToProps = ({ InputAddPage }) => {
-	const { company, position, research, question, notes, onAdd } = InputAddPage;
-	return { company, position, research, question, notes, onAdd };
+	const { company, position, research, question, notes, addSuccess } = InputAddPage;
+	return { company, position, research, question, notes, addSuccess };
 };
 
 export default connect(mapStateToProps, { updateCompany, updatePosition, updateResearch, updateQuestion, updateNotes, onAdd, resetInputs })(AddPage);
