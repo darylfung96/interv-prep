@@ -22,7 +22,7 @@ class HomePage extends Component {
 	}
 
 	render() {
-		if(this.props._id !== undefined) {
+		if(this.props.user !== '') {
 			return <Redirect to="/dashboard" />;
 		}
 
@@ -133,7 +133,7 @@ const styles = {
 
 const mapStateToProps = ({ FetchUser }) => {
 	const { user } = FetchUser;
-	return user;
+	return { user };
 }
 
 export default connect(mapStateToProps, { fetchUser })(HomePage);

@@ -10,8 +10,5 @@ export const fetchCollections = () => async(dispatch) => {
 		});
 	}
 
-	dispatch({
-		type: FETCH_COLLECTIONS,
-		payload: 'empty'
-	});
+
 }

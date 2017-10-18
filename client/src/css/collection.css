@@ -1,0 +1,18 @@
+.example-enter {
+  opacity: 0.01;
+  transition: 800ms;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  trnasition: 500ms;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: 300ms;
+}

@@ -9,16 +9,34 @@ import { fontFamilyStyle } from '../styles/fontStyle';
 
 class Dashboard extends Component {
 
-	componentWillMount() {
-		
+	componentDidMount() {
+		this.props.fetchCollections();
+	}
+
+	renderCollection() {
+		const { userInfo } = this.props;
+		const companies = Object.keys(userInfo).map((key)=>{
+			const company = { [key]: userInfo[key] };
+			return <CompanyItem key={key} company={company} />;
+		});
+		return companies;
 	}
 
 
-	render() {
+/* Hardcoded collections */
+	// <div className='collection'>
+	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>1</span>Wawanesa</a>
+	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='new badge'>4</span>Norima</a>
+	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}>24-7 InTouch</a>
+	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>14</span>Amazon</a>
+	// </div>
 
-		if (this.props._id === undefined) {
+	render() {
+		if (this.props.user === '') {
 			return <Redirect to='/' />
 		}
+
+		this.renderCollection();
 
 		return (
 			<div>
@@ -27,12 +45,8 @@ class Dashboard extends Component {
 			<h4 style={{ marginLeft: 15 }}>Interviews</h4>
 
 			<div className='collection'>
-			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>1</span>Wawanesa</a>
-			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='new badge'>4</span>Norima</a>
-			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}>24-7 InTouch</a>
-			  <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>14</span>Amazon</a>
+			{ this.renderCollection() }
 			</div>
-
 
 
 			<div className='fixed-action-btn horizontal'>
@@ -49,9 +63,10 @@ class Dashboard extends Component {
 	}
 }
 
-const mapStateToProps = ({ FetchUser }) => {
+const mapStateToProps = ({ FetchUser, DashCollectReducer }) => {
 	const { user } = FetchUser;
-	return user;
+	const { userInfo } = DashCollectReducer;
+	return { user, userInfo };
 };
 
 export default connect(mapStateToProps, { fetchUser, fetchCollections })(Dashboard);
