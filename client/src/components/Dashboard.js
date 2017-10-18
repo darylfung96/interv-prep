@@ -13,13 +13,30 @@ class Dashboard extends Component {
 		this.props.fetchCollections();
 	}
 
+
 	renderCollection() {
 		const { userInfo } = this.props;
+
+		if(userInfo === undefined) {
+			return (
+				<div className='container center'>
+					<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> No results found.</p>
+					<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> You can start by adding companies.</p>
+				</div>
+			);
+		}
+
+
 		const companies = Object.keys(userInfo).map((key)=>{
 			const company = { [key]: userInfo[key] };
 			return <CompanyItem key={key} company={company} />;
 		});
-		return companies;
+		return (
+			<div className='collection'>
+			<h4 style={{ marginLeft: 15 }}>Interviews</h4>
+			{companies}
+			</div>
+		);
 	}
 
 
@@ -35,18 +52,14 @@ class Dashboard extends Component {
 		if (this.props.user === '') {
 			return <Redirect to='/' />
 		}
-
 		this.renderCollection();
 
 		return (
 			<div>
 			<Header />
 			<br/><br/><br/>
-			<h4 style={{ marginLeft: 15 }}>Interviews</h4>
 
-			<div className='collection'>
 			{ this.renderCollection() }
-			</div>
 
 
 			<div className='fixed-action-btn horizontal'>

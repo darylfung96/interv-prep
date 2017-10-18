@@ -37,7 +37,6 @@ class HomePage extends Component {
 
 
 				<div className='container'>
-					<hr className='blue darken-1' style={{ height: 2, width: 70, marginTop: 200, marginBottom: 200 }}/>
 
 					<div className='row center' style={{ marginTop: 100, marginBottom: 100 }}>
 						<a className='col s6'>insert icon here</a>
@@ -47,7 +46,7 @@ class HomePage extends Component {
 						</div>
 					</div>
 
-					<hr className='blue darken-1' style={{ height: 2, width: 70, marginTop: 200, marginBottom: 200 }}/>
+					<hr className='blue darken-1' style={{ height: 2, width: 70, marginTop: 50, marginBottom: 50 }}/>
 
 					<div className='row center'>
 						<div className='col s3'>
@@ -72,7 +71,7 @@ class HomePage extends Component {
 						</div>
 					</div>
 
-					<hr className='blue darken-1' style={{ height: 2, width: 70, marginTop: 200, marginBottom: 150 }}/>
+					<hr className='blue darken-1' style={{ height: 2, width: 70, marginTop: 50, marginBottom: 50 }}/>
 
 				</div>
 
@@ -121,7 +120,7 @@ const styles = {
 		justifyContent: 'center',
 	},
 	loginStyle: {
-		marginTop: 30,
+		marginTop: 10,
 		display: 'flex',
 		justifyContent: 'center',
 		flexDirection: 'column',
