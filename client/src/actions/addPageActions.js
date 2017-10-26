@@ -19,19 +19,12 @@ export const updatePosition = (position) => {
 	}
 };
 
-export const updateResearch = (research) => {
-	return {
-		type: UPDATE_RESEARCH_INPUT,
-		payload: research
-	}
-};
-
-export const updateQuestion = (question) => {
-	return {
-		type: UPDATE_QUESTION_INPUT,
-		payload: question
-	}
-};
+// export const updateQuestion = (question) => {
+// 	return {
+// 		type: UPDATE_QUESTION_INPUT,
+// 		payload: question
+// 	}
+// };
 
 export const updateNotes = (notes) => {
 	return {
@@ -52,8 +45,8 @@ export const onAdd = (company, position, research, question, notes) => async(dis
 		body: JSON.stringify({
 			company,
 			position,
-			research,
-			question,
+			// research,
+			// question,
 			notes,
 			_id: currentUser.data._id,
 		})

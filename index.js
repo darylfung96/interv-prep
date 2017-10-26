@@ -20,7 +20,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 
 require('./routes/authRoute')(app);
-require('./routes/dashboardRoute')(app);
+require('./routes/addRoute')(app);
 
 const path = require('path');
 

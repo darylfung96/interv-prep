@@ -14,3 +14,4 @@ export const RESET_INPUTS = 'reset_inputs';
 
 // editPage Component
 export const GO_EDIT_PAGE = 'go_edit_page';
+export const ON_ADD_RESEARCH = 'on_add_research';

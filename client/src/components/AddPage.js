@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { notify } from 'react-notify-toast';
 
-import { updateCompany, updatePosition, updateResearch, updateQuestion, updateNotes, onAdd, resetInputs } from '../actions';
+import { updateCompany, updatePosition, updateNotes, onAdd, resetInputs } from '../actions';
 import { Header } from './common';
 import '../css/input.css';
 
@@ -17,6 +17,9 @@ class AddPage extends Component {
 	componentWillMount() {
 		this.props.resetInputs();
 	}
+
+	// <div className='input-field col s12'> <textarea onChange={ (text) => { this.props.updateResearch(text.target.value); }} id='textarea1' type='text' className='materialize-textarea'></textarea> <label htmlFor='textarea1'>Research</label> </div>
+	// <div className='input-field col s12'> <textarea onChange={ (text) => { this.props.updateQuestion(text.target.value); }} id='textarea1' type='text' className='materialize-textarea'></textarea> <label htmlFor='textarea1'>Questions to ask</label> </div>
 
 	render() {
 
@@ -40,8 +43,6 @@ class AddPage extends Component {
 				<form className='col s12'>
 					<div className='input-field col s12'> <input onChange={ (text) => { this.props.updateCompany(text.target.value); }} id='icon_prefix' type='text' className='validate'></input> <label htmlFor='icon_prefix'>Company</label> </div>
 					<div className='input-field col s12'> <input onChange={ (text) => { this.props.updatePosition(text.target.value); }} id='icon_prefix' type='text' className='validate'></input> <label htmlFor='icon_prefix'>Job Position</label> </div>
-					<div className='input-field col s12'> <textarea onChange={ (text) => { this.props.updateResearch(text.target.value); }} id='textarea1' type='text' className='materialize-textarea'></textarea> <label htmlFor='textarea1'>Research</label> </div>
-					<div className='input-field col s12'> <textarea onChange={ (text) => { this.props.updateQuestion(text.target.value); }} id='textarea1' type='text' className='materialize-textarea'></textarea> <label htmlFor='textarea1'>Questions to ask</label> </div>
 					<div className='input-field col s12'> <textarea onChange={ (text) => { this.props.updateNotes(text.target.value); }} id='textarea1' type='text' className='materialize-textarea'></textarea> <label htmlFor='textarea1'>Notes</label> </div>
 				</form>
 
@@ -58,4 +59,4 @@ const mapStateToProps = ({ InputAddPage }) => {
 	return { company, position, research, question, notes, addSuccess };
 };
 
-export default connect(mapStateToProps, { updateCompany, updatePosition, updateResearch, updateQuestion, updateNotes, onAdd, resetInputs })(AddPage);
+export default connect(mapStateToProps, { updateCompany, updatePosition, updateNotes, onAdd, resetInputs })(AddPage);

@@ -15,7 +15,6 @@ module.exports = (app) => {
 			}
 			// create copy of collections
 			const newCollections = { ...currentUser.collections };
-			console.log('pass');
 			// add the new collection
 			newCollections[company] = [...newCollections[company], [position, research, question, notes]];
 			currentUser.collections = newCollections;
@@ -24,5 +23,10 @@ module.exports = (app) => {
 			res.send('fail');
 		}
 		res.send('success');
+	});
+
+
+	app.post('/dashboard/edit/add/research', async (req, res) => {
+		
 	});
 };
