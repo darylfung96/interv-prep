@@ -11,3 +11,6 @@ export const UPDATE_QUESTION_INPUT = 'update_question_input';
 export const UPDATE_NOTES_INPUT = 'update_notes_input';
 export const ON_ADD = 'on_add';
 export const RESET_INPUTS = 'reset_inputs';
+
+// editPage Component
+export const GO_EDIT_PAGE = 'go_edit_page';

@@ -31,8 +31,6 @@ passport.use(
 		const user = await new User({ googleID: profile.id }).save((err) => {
 			console.log(err);
 		});
-		user.collection = { type: 'test' };
-		user.save();
 		done(null, user);
 	}
 ));

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { fontFamilyStyle } from '../../styles/fontStyle';
 
 class Header extends Component  {
@@ -28,7 +29,7 @@ class Header extends Component  {
 				<div>
 				<nav>
 				<div className='nav-wrapper blue lighten-1'>
-					<a className='brand-logo left' style={{ marginLeft: 15 }}>Inter-Prep</a>
+					<Link to='/dashboard' className='brand-logo left' style={{ marginLeft: 15 }}>Inter-Prep</Link>
 					<ul className='right'>
 						<li style={{marginRight: 20, }} className='dropdown-button' data-activates='dropdown1'>
 							<a className={isActivated} onClick={this.setDropdown.bind(this)} style={{ overflow: 'hidden' }} ><i className="material-icons right">more_vert</i></a>

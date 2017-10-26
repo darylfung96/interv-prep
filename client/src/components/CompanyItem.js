@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { goEdit } from '../actions';
 import '../css/collection.css';
 
 class CompanyItem extends Component {
@@ -10,7 +13,12 @@ class CompanyItem extends Component {
 		if(this.state.shouldExpand) {
 			const positions = this.props.company[companyName];
 			const listItem = positions.map((position) => {
-				return <li key={position} style={{ padding: 15, fontFamily: 'Roboto' }} className='collection-item'>{position[0]}<a href='#!' style={{ float: 'right', marginRight: 20 }} ><i className='material-icons'>edit</i></a></li>
+				return <li key={position} style={{ padding: 15, fontFamily: 'Roboto' }}
+				className='collection-item'>{position[0]}<Link to='dashboard/edit'
+				onClick={ () => { this.props.goEdit(companyName, position); } }
+				style={{ float: 'right', marginRight: 20 }} >
+					<i className='material-icons'>edit</i></Link>
+				</li>
 			});
 			return(
 
@@ -39,4 +47,4 @@ class CompanyItem extends Component {
 	}
 }
 
-export default CompanyItem;
+export default connect(null, { goEdit })(CompanyItem);

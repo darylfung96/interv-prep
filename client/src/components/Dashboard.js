@@ -32,21 +32,14 @@ class Dashboard extends Component {
 			return <CompanyItem key={key} company={company} />;
 		});
 		return (
-			<div className='collection'>
+			<div>
 			<h4 style={{ marginLeft: 15 }}>Interviews</h4>
+			<div className='collection'>
 			{companies}
+			</div>
 			</div>
 		);
 	}
-
-
-/* Hardcoded collections */
-	// <div className='collection'>
-	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>1</span>Wawanesa</a>
-	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='new badge'>4</span>Norima</a>
-	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}>24-7 InTouch</a>
-	//   <a href='#!' className='collection-item blue-text text-darken-1' style={{ fontSize: 18, padding: 20 }}><span className='badge'>14</span>Amazon</a>
-	// </div>
 
 	render() {
 		if (this.props.user === '') {
