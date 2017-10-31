@@ -2,47 +2,84 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 
-import { updateResearch, addResearch } from '../actions';
+import { updateResearch, addResearch, resetResearch, retrieveResearch } from '../actions';
 import { Header } from './common/Header';
 
 class EditPage extends Component {
 
 	state = { modalState: false };
 
-	componentWillMount() {
-
+	componentDidMount() {
+		this.props.retrieveResearch(this.props.companyName, this.props.position);
 	}
 
-	render() {
-		return(
-			<div>
-				<Header />
-				<br/><br/><br/>
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps);
+	}
 
-				<p style={{ marginLeft: 15, fontSize: 20 }}>{this.props.companyName}</p>
-				<p style={{ marginLeft: 15, fontSize: 18 }}>{this.props.position[0]}</p>
+	onClickAdd() {
+		this.setState({ modalState: !this.state.modalState});
+		this.props.resetResearch();
+	}
 
-				<div className='row container'>
-					<div className='col s4 m3'>
-						<div className='card' style={{ display: 'flex', alignItems: 'center', marginLeft: 15 }}>
-							<div className='card-content'>
-								<p style={{ display: 'block', }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-							</div>
+	addResearch() {
+		this.props.addResearch(this.props.researchInput, this.props.companyName, this.props.position);
+	}
+
+	renderCardItems() {
+		const { research } = this.props;
+
+		if(research === undefined) return (
+			<div className='container center'>
+				<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> No results found.</p>
+				<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> You can start by adding researches.</p>
+			</div>
+		);
+
+
+		const researches = research.map(singleResearch => {
+			return (
+				<div ref={input => {this.myInput = input}} className='col s6 m3'>
+					<div className='card' style={{...cardStyle}}>
+						<div className='card-content'>
+							<p style={{ display: 'block', }} className='truncate' >{singleResearch}</p>
 						</div>
 					</div>
 				</div>
+			);
+		});
+
+		return researches;
+	}
+
+
+	render() {
+
+		return(
+			<div>
+				<Header />
+				<br/>
+
+				<p style={{ marginLeft: 15, fontSize: 20 }}>{this.props.companyName}</p>
+				<p style={{ marginLeft: 15, fontSize: 18 }}>{this.props.position}</p>
+
+				<div className='container center row'>
+					{ this.renderCardItems() }
+				</div>
 
 				<div className='fixed-action-btn horizontal'>
-	    			<a onClick={() => { this.setState({ modalState: !this.state.modalState}); }} className='btn-floating btn-large blue lighten-1'>
+	    			<a onClick={this.onClickAdd.bind(this)} className='btn-floating btn-large blue lighten-1'>
 	      				<i className='large material-icons'>add</i>
 	    			</a>
 	  			</div>
+
+
 
 				<Modal
 				isOpen={this.state.modalState}
 				style={customStyles}
 				>
-					<a href='#' onClick={() => { this.setState({ modalState: !this.state.modalState }); }} style={{ position: 'absolute', right: '10%'}}><i className='material-icons'>close</i></a>
+					<a href='#' onClick={() => { this.setState({ modalState: !this.state.modalState }); }} style={{ position: 'absolute', right: '10%'}}><i style={{ color: 'black', marginTop: 10 }} className='material-icons'>close</i></a>
 					<h5 style={{ marginLeft: 30 }}>Add a Research</h5>
 					<div style={{ display: 'flex', justifyContent: 'center' }}>
 						<form style={{ width: '70%', position: 'absolute', top: '30%'}} className='col s12'>
@@ -50,7 +87,7 @@ class EditPage extends Component {
 						</form>
 					</div>
 					<div>
-					<a style={{ position: 'absolute', right: '10%', bottom: '20%' }} className="waves-effect waves-light btn blue lighten-1">Add</a>
+					<a onClick={this.addResearch.bind(this)} style={{ position: 'absolute', right: '10%', bottom: '20%' }} className="waves-effect waves-light btn blue lighten-1">Add</a>
 					</div>
 				</Modal>
 
@@ -75,11 +112,18 @@ const customStyles = {
 	},
 };
 
-const mapStateToProps = ({ EditPageReducer, InputEditPageReducer }) => {
-	const { companyName, position } = EditPageReducer;
-	const { research } = InputEditPageReducer;
-
-	return { companyName, position, research };
+const cardStyle = {
+	display: 'flex',
+	alignItems: 'center',
+	marginLeft: 15,
 };
 
-export default connect(mapStateToProps, { updateResearch, addResearch })(EditPage);
+
+const mapStateToProps = ({ EditPageReducer, InputEditPageReducer }) => {
+	const { companyName, position, research } = EditPageReducer;
+	const { researchInput } = InputEditPageReducer;
+
+	return { companyName, position, research, researchInput };
+};
+
+export default connect(mapStateToProps, { updateResearch, addResearch, resetResearch, retrieveResearch })(EditPage);

@@ -11,22 +11,45 @@ module.exports = (app) => {
 			}
 			// if the current company doesn't exist, we initialize them
 			if (currentUser.collections[company] === undefined) {
-				currentUser.collections[company] = [];
+				currentUser.collections[company] = {};
 			}
 			// create copy of collections
 			const newCollections = { ...currentUser.collections };
 			// add the new collection
-			newCollections[company] = [...newCollections[company], [position, research, question, notes]];
+			//TODO add check for already existed job position
+			newCollections[company][position] = { research: [], question, notes };
 			currentUser.collections = newCollections;
 			currentUser.save();
 		} else {
+			console.log('User not found.');
 			res.send('fail');
 		}
 		res.send('success');
 	});
 
-
 	app.post('/dashboard/edit/add/research', async (req, res) => {
-		
+		const { research, company, positionName, _id } = req.body;
+		const currentUser = await User.findOne({ _id });
+		// if user exist
+		if(currentUser) {
+			console.log(currentUser);
+			// create copy of collections
+			const newCollections = { ...currentUser.collections };
+			const researchArray = [...currentUser.collections[company][positionName].research, research];
+			newCollections[company][positionName].research = researchArray;
+
+			User.findByIdAndUpdate(currentUser._id,
+									{$set:{ collections: newCollections }}, { new: true },
+									(err, user) => {
+										console.log(err);
+									});
+			res.send('success');
+		} else {
+			console.log('User not found.');
+			res.send('fail');
+		}
+
 	});
+
+
 };

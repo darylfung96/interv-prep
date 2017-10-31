@@ -11,7 +11,10 @@
     },
     "/dashboard/add/submit": {
       "target": "http://localhost:5000"
-    }
+  	},
+	"/dashboard/edit/add/research": {
+		"target": "http://localhost:5000"
+	}
   },
   "dependencies": {
     "axios": "^0.16.2",

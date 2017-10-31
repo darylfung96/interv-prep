@@ -45,7 +45,7 @@ class Dashboard extends Component {
 		if (this.props.user === '') {
 			return <Redirect to='/' />
 		}
-		this.renderCollection();
+	
 
 		return (
 			<div>

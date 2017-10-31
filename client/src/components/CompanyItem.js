@@ -12,14 +12,16 @@ class CompanyItem extends Component {
 	expandContent(companyName) {
 		if(this.state.shouldExpand) {
 			const positions = this.props.company[companyName];
-			const listItem = positions.map((position) => {
+
+			const listItem = Object.keys(positions).map(position => {
 				return <li key={position} style={{ padding: 15, fontFamily: 'Roboto' }}
-				className='collection-item'>{position[0]}<Link to='dashboard/edit'
+				className='collection-item'>{position}<Link to='dashboard/edit'
 				onClick={ () => { this.props.goEdit(companyName, position); } }
 				style={{ float: 'right', marginRight: 20 }} >
 					<i className='material-icons'>edit</i></Link>
 				</li>
 			});
+
 			return(
 
 				<ul className='collection'>
