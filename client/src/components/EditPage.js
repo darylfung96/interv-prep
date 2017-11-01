@@ -5,6 +5,9 @@ import Modal from 'react-modal';
 import { updateResearch, addResearch, resetResearch, retrieveResearch } from '../actions';
 import { Header } from './common/Header';
 
+import '../css/breadcrumb.css';
+import '../css/EditPage/hover-card.css';
+
 class EditPage extends Component {
 
 	state = { modalState: false };
@@ -29,8 +32,6 @@ class EditPage extends Component {
 	renderCardItems() {
 		const { research } = this.props;
 
-		console.log(research);
-
 		if(research === undefined || research.length === 0) return (
 			<div className='container center'>
 				<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> No results found.</p>
@@ -42,9 +43,9 @@ class EditPage extends Component {
 		const researches = research.map(singleResearch => {
 			return (
 				<div ref={input => {this.myInput = input}} className='col s6 m3'>
-					<div className='card' style={{...cardStyle}}>
-						<div className='card-content'>
-							<p style={{ display: 'block', }} className='truncate' >{singleResearch}</p>
+					<div className='card hover-card' style={{...cardStyle}}>
+						<div className='card-content truncate'>
+							<p style={{ display: 'block', }} >{singleResearch}</p>
 						</div>
 					</div>
 				</div>
@@ -62,8 +63,14 @@ class EditPage extends Component {
 				<Header />
 				<br/>
 
-				<p style={{ marginLeft: 15, fontSize: 20 }}>{this.props.companyName}</p>
-				<p style={{ marginLeft: 15, fontSize: 18 }}>{this.props.position}</p>
+
+				<nav style={{ backgroundColor: '#FFF', boxShadow: 'none' }}>
+				    	<div style={{ marginLeft: 20 }} className="col s12">
+				        	<a className="breadcrumb blue-text text-lighten 1">{this.props.companyName}</a>
+				        	<a className="breadcrumb blue-text text-lighten 1">{this.props.position}</a>
+				    	</div>
+			  	</nav>
+
 
 				<div className='container center row'>
 					{ this.renderCardItems() }
