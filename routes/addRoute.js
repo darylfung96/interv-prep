@@ -18,8 +18,11 @@ module.exports = (app) => {
 			// add the new collection
 			//TODO add check for already existed job position
 			newCollections[company][position] = { research: [], question, notes };
-			currentUser.collections = newCollections;
-			currentUser.save();
+			User.findByIdAndUpdate(currentUser._id,
+									{$set:{ collections: newCollections } }, { new: true },
+									(err, user) => {
+										console.log(err);
+									});
 		} else {
 			console.log('User not found.');
 			res.send('fail');

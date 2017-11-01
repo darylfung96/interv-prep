@@ -29,7 +29,9 @@ class EditPage extends Component {
 	renderCardItems() {
 		const { research } = this.props;
 
-		if(research === undefined) return (
+		console.log(research);
+
+		if(research === undefined || research.length === 0) return (
 			<div className='container center'>
 				<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> No results found.</p>
 				<p style={{ fontFamily: 'Roboto', fontSize: 20, color: '#888' }}> You can start by adding researches.</p>
