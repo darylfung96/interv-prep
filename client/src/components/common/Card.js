@@ -1,21 +1,59 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Modal from 'react-modal';
 
-const Card = ({ image, title, titleLink, details, height}) => {
-	return (
-		<div className="card">
-		    <div className="card-image waves-effect waves-block waves-light">
-		      	<img className='activator' src={image} height={height} alt={title} />
-		    </div>
-		    <div className="card-content">
-		      	<span className="card-title activator grey-text text-darken-4">{title}<i className="material-icons right">more_vert</i></span>
-		      	<p><a href="">{titleLink}</a></p>
-		    </div>
-		    <div className="card-reveal">
-		      	<span className="card-title grey-text text-darken-4">{title}<i className="material-icons right">close</i></span>
-		      	<p>{details}</p>
-    		</div>
-  		</div>
-	);
+class Card extends Component {
+
+	state = { show: false };
+
+	render() {
+		return (
+			<div>
+				<div onClick={ ()=>{ this.setState({ show: !this.state.show }) } } className='col s6 m3'>
+					<div className='card hover-card' style={{...cardStyle}}>
+						<div className='card-content truncate'>
+							<p style={{ display: 'block', }} >{this.props.singleResearch}</p>
+						</div>
+					</div>
+				</div>
+
+				<Modal
+				isOpen={this.state.show}
+				style={customStyles}
+				>
+					<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+							<p style={{ textAlign: 'center' }}>{this.props.singleResearch}</p>
+					</div>
+					<a href="#" style={{ position: 'absolute', right: 0, marginRight: 20 }} onClick={() => {this.setState({ show: !this.state.show})}}><i style={{ color: 'black', marginTop: 10 }} className='material-icons'>close</i></a>
+				</Modal>
+
+			</div>
+		);
+	}
+}
+
+const cardStyle = {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	padding: 20,
+	marginLeft: 15,
 };
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+	width				  : '35%',
+	height				  : '35%',
+    transform             : 'translate(-50%, -50%)',
+},
+	overlay: {
+		backgroundColor   : 'rgba(0, 0, 0, 0.5)'
+	},
+};
+
 
 export { Card };

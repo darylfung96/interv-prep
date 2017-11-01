@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 
 import { updateResearch, addResearch, resetResearch, retrieveResearch } from '../actions';
-import { Header } from './common/Header';
+import { Header, Card } from './common';
+
 
 import '../css/breadcrumb.css';
 import '../css/EditPage/hover-card.css';
@@ -42,13 +43,7 @@ class EditPage extends Component {
 
 		const researches = research.map(singleResearch => {
 			return (
-				<div ref={input => {this.myInput = input}} className='col s6 m3'>
-					<div className='card hover-card' style={{...cardStyle}}>
-						<div className='card-content truncate'>
-							<p style={{ display: 'block', }} >{singleResearch}</p>
-						</div>
-					</div>
-				</div>
+				<Card singleResearch={singleResearch} />
 			);
 		});
 

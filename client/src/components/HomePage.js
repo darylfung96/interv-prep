@@ -8,7 +8,6 @@ import person from '../image/person.png';
 import position from '../image/position.png';
 import company from '../image/company.png';
 import { headingStyle } from '../styles/fontStyle';
-import { Card } from './common';
 
 import { fetchUser } from '../actions';
 
