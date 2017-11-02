@@ -11,10 +11,10 @@
     },
     "/dashboard/add/submit": {
       "target": "http://localhost:5000"
-  	},
-	"/dashboard/edit/add/research": {
-		"target": "http://localhost:5000"
-	}
+    },
+    "/dashboard/edit/add/research": {
+      "target": "http://localhost:5000"
+    }
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -23,6 +23,7 @@
     "react-dom": "^16.0.0",
     "react-modal": "^3.1.0",
     "react-redux": "^5.0.6",
+    "react-responsive-modal": "^1.9.2",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-transition-group": "^1.2.1",
