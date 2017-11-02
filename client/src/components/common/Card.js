@@ -46,6 +46,6 @@ const cardStyle = {
 
 const borderStyle = {
 	borderRadius: 15
-}
+};
 
 export { Card };
